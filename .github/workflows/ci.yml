@@ -24,4 +24,4 @@ jobs:
         run: javac -d out src/**/*.java
 
       - name: Run program
-        run: java -cp out Main
+        run: java -cp out src.Main
