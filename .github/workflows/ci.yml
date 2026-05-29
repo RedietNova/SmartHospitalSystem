@@ -3,8 +3,6 @@ name: Smart Hospital CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -21,7 +19,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Compile project
-        run: javac -d out src/**/*.java
+        run: |
+          mkdir out
+          javac -d out $(find src -name "*.java")
 
       - name: Run program
-        run: java -cp out src.Main
+        run: java -cp out Main
